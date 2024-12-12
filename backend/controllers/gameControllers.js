@@ -70,4 +70,37 @@ exports.deleteJogo = (req, res) => {
             res.send('Jogo deletado com sucesso :)');
         }
     });
+
 };
+
+
+
+//------Lista de desejos------//
+
+
+
+//GET ALL - listar os desejos
+exports.getAllDesejos = (req, res) => {
+    DesejosModel.getAll((err, DEsejos) => {
+        if (err) {
+            res.status(500).send('Erro ao buscar jogos');
+        } else {
+            res.json(jogos);
+        }
+    });
+};
+
+
+// POST - Incluir desejo na lista
+exports.addDesejo = (req, res) => {
+    const novoJogo = req.body;
+    DesejoModel.create(novoDesejo, (err) => {
+        if (err) {
+            res.status(500).send('Erro ao adicionar jogo :(');
+        } else {
+            res.status(201).send('Jogo adicionado com sucesso :)');
+        }
+    });
+};
+
+// PUT - Atualizar lista
