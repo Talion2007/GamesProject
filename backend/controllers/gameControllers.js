@@ -16,7 +16,7 @@ exports.getJogosByGenero = (req, res) => {
     const { genero } = req.params;
     jogosModel.getJogosByGenero(genero, (err, jogos) => {
         if (err) {
-            res.status(500).send('Erro ao buscar jogos por gênero');
+            res.status(500).send('Erro ao buscar jogos por gênero :(');
         } else {
             res.json(jogos);
         }
@@ -26,7 +26,7 @@ exports.getJogosByGenero = (req, res) => {
 // GET Plataforma - Listar jogos por plataforma
 exports.getJogosByPlataforma = (req, res) => {
     const { plataforma } = req.params;
-    jogosModel.getByPlataforma(plataforma, (err, jogos) => {
+    jogosModel.getJogosByPlataforma(plataforma, (err, jogos) => {
         if (err) {
             res.status(500).send('Erro ao buscar jogos por plataforma');
         } else {
@@ -36,11 +36,11 @@ exports.getJogosByPlataforma = (req, res) => {
 };
 
 // POST - Incluir jogo
-exports.addJogo = (req, res) => {
-    const novoJogo = req.body;
-    jogosModel.create(novoJogo, (err) => {
+exports.addJogos = (req, res) => {
+    const data = req.body;
+    jogosModel.addJogos(data, (err) => {
         if (err) {
-            res.status(500).send('Erro ao adicionar jogo :(');
+            res.status(500).send('Erro ao adicionar jogo :(' + err.message);
         } else {
             res.status(201).send('Jogo adicionado com sucesso :)');
         }
@@ -48,12 +48,12 @@ exports.addJogo = (req, res) => {
 };
 
 // PUT - Atualizar jogo
-exports.updateJogo = (req, res) => {
+exports.updateJogos = (req, res) => {
     const { id } = req.params;
-    const dadosAtualizados = req.body;
-    jogosModel.updateJogo(id, dadosAtualizados, (err) => {
+    const data = req.body;
+    jogosModel.updateJogos(id, data, (err) => {
         if (err) {
-            res.status(500).send('Erro ao atualizar jogo :(');
+            res.status(500).send('Erro ao atualizar jogo :('+ err.message);
         } else {
             res.send('Jogo atualizado com sucesso :)');
         }
@@ -61,9 +61,9 @@ exports.updateJogo = (req, res) => {
 };
 
 // DELETE - Deletar jogo
-exports.deleteJogo = (req, res) => {
+exports.deleteJogos = (req, res) => {
     const { id } = req.params;
-    jogosModel.deleteJogo(id, (err) => {
+    jogosModel.deleteJogos(id, (err) => {
         if (err) {
             res.status(500).send('Erro ao deletar jogo :(');
         } else {
@@ -76,7 +76,6 @@ exports.deleteJogo = (req, res) => {
 
 
 //------Lista de desejos------//
-
 
 
 //GET ALL - listar os desejos

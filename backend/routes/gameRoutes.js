@@ -8,10 +8,10 @@ router.get('/jogos/generos/:genero', gameController.getJogosByGenero);
 
 router.get('/jogos/plataformas/:plataforma', gameController.getJogosByPlataforma); 
 
-router.post('/jogos', gameController.addJogo);
+router.post('/jogos', gameController.addJogos);
 
-router.put('/jogos/:id', gameController.updateJogo);
+router.put('/jogos/:id', gameController.updateJogos);
 
-router.delete('/jogo/:id', gameController.deleteJogo);
+router.delete('/jogos/:id', gameController.deleteJogos);
 
 module.exports = router;
