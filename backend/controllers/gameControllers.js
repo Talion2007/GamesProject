@@ -1,10 +1,10 @@
 //controllers/userController
-const userModel = require('../model/userModel'); // Importa o model para interagir com o banco
+const gameModels = require('../model/gameModels'); // Importa o model para interagir com o banco
 // Função para lidar com a requisição de listagem de usuários
 exports.getUsers = (req, res) => {
-userModel.getAllUsers((err, users) => {
+gameModels.getAllUsers((err, users) => {
 if (err) {
-res.status(500).send('Erro ao buscar usuários'); // Retorna um erro 500 se algo deu errado
+res.status(500).send('Erro ao buscar Jogo'); // Retorna um erro 500 se algo deu errado
 } else {
 res.json(users); // Retorna os usuários em formato JSON
 }
@@ -13,7 +13,7 @@ res.json(users); // Retorna os usuários em formato JSON
 // Função para lidar com a requisição de criação de usuário
 exports.createUser = (req, res) => {
     const data = req.body; // Extrai o nome do corpo da requisição
-    userModel.createUser(data, (err) => {
+    gameModels.createUser(data, (err) => {
     if (err) {
     res.status(500).send('Erro ao criar usuário'); // Retorna um erro 500 se algo deu errado
     } else {
@@ -25,7 +25,7 @@ exports.createUser = (req, res) => {
     exports.updateUser = (req, res) => {
     const { id } = req.params; // Extrai o ID dos parâmetros da URL
     const { name } = req.body; // Extrai o nome do corpo da requisição
-    userModel.updateUser(id, name, (err) => {
+    gameModels.updateUser(id, name, (err) => {
     if (err) {
     res.status(500).send('Erro ao atualizar usuário'); // Retorna um erro 500 se algo deu errado
     } else {
@@ -36,7 +36,7 @@ exports.createUser = (req, res) => {
     // Função para lidar com a requisição de remoção de usuário
     exports.deleteUser = (req, res) => {
     const { id } = req.params; // Extrai o ID dos parâmetros da URL
-    userModel.deleteUser(id, (err) => {
+    gameModels.deleteUser(id, (err) => {
         if (err) {
         res.status(500).send('Erro ao deletar usuário'); // Retorna um erro 500 se algo deu errado
         } else {
