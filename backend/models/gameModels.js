@@ -37,7 +37,12 @@ exports.getAllJogos = (callback) => {
   connection.connect();
 };
 
+
+
+
+
 //...........//
+
 
 exports.getAllLista = (callback) => {
     const connection = createConnection();
@@ -220,7 +225,6 @@ exports.createJogos = (data, callback) => {
 };
 
 //...............//
-
 exports.createLista = (data, callback) => {
     const connection = createConnection();
     connection.on("connect", (err) => {

@@ -14,7 +14,7 @@ exports.getAllJogos = (req, res) => {
 // GET Gênero - Listar jogos por gênero
 exports.getJogosByGenero = (req, res) => {
     const { genero } = req.params;
-    jogosModel.getByGenero(genero, (err, jogos) => {
+    jogosModel.getJogosByGenero(genero, (err, jogos) => {
         if (err) {
             res.status(500).send('Erro ao buscar jogos por gênero');
         } else {
@@ -51,7 +51,7 @@ exports.addJogo = (req, res) => {
 exports.updateJogo = (req, res) => {
     const { id } = req.params;
     const dadosAtualizados = req.body;
-    jogosModel.update(id, dadosAtualizados, (err) => {
+    jogosModel.updateJogo(id, dadosAtualizados, (err) => {
         if (err) {
             res.status(500).send('Erro ao atualizar jogo :(');
         } else {
@@ -63,7 +63,7 @@ exports.updateJogo = (req, res) => {
 // DELETE - Deletar jogo
 exports.deleteJogo = (req, res) => {
     const { id } = req.params;
-    jogosModel.delete(id, (err) => {
+    jogosModel.deleteJogo(id, (err) => {
         if (err) {
             res.status(500).send('Erro ao deletar jogo :(');
         } else {
@@ -81,7 +81,7 @@ exports.deleteJogo = (req, res) => {
 
 //GET ALL - listar os desejos
 exports.getAllDesejos = (req, res) => {
-    DesejosModel.getAll((err, DEsejos) => {
+    DesejosModel.getAllDesejos((err, DEsejos) => {
         if (err) {
             res.status(500).send('Erro ao buscar jogos');
         } else {
@@ -107,7 +107,7 @@ exports.addDesejo = (req, res) => {
 exports.updateDesejo = (req, res) => {
     const { id } = req.params;
     const DsejosAtualizados = req.body;
-    DsejoModel.update(id, DsejosAtualizados, (err) => {
+    DsejoModel.updateDesejo(id, DsejosAtualizados, (err) => {
         if (err) {
             res.status(500).send('Erro ao atualizar jogo :(');
         } else {
