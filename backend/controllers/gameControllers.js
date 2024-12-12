@@ -11,7 +11,14 @@ res.json(users); // Retorna os usuários em formato JSON
 });
 };
 
+// GET jogos
 
+
+
+
+
+
+// GET lista de desejos 
 // Get de gênero
 exports.createUser = (req, res) => {
     const data = req.body; // Extrai o nome do corpo da requisição
