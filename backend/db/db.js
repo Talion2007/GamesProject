@@ -5,12 +5,12 @@ server: 'localhost',  // Nome do servidor (pode ser 'localhost' ou um endereço 
     authentication: { 
         type: 'default', // Tipo de autenticação (no caso, autenticando com nome de usuário e senha) 
         options: { 
-            userName: 'testesql',    // Nome do usuário do banco de dados 
-            password: '12345678'  // Senha do banco de dados 
+            userName: 'sa',    // Nome do usuário do banco de dados 
+            password: '12345'  // Senha do banco de dados 
         } 
     }, 
     options: { 
-        database: 'Joguinhos',      // Nome do banco de dados 
+        database: 'Games',      // Nome do banco de dados 
         encrypt: false,          // Desativar criptografia (pode mudar se necessário) 
         port: 1433,              // Porta padrão do SQL Server 
         trustServerCertificate: true // Necessário para evitar erro de SSL em ambiente local 
