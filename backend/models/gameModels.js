@@ -1,5 +1,5 @@
 //Model
-const createConnection = require("../db");
+const createConnection = require("../db/db");
 const { Request, TYPES } = require("tedious");
 
 // Buscar todos os Users
@@ -103,7 +103,7 @@ exports.getJogosByID = (ID, callback) => {
 };
 
 //.......//
-exports.getListaByID = (ID, callback) => {
+exports.getListaByID = (ID_Jogos, callback) => {
     const connection = createConnection();
     connection.on("connect", (err) => {
       if (err) {
@@ -114,7 +114,7 @@ exports.getListaByID = (ID, callback) => {
         if (err) return callback(err, null);
       });
   
-      request.addParameter("ID", TYPES.Int, ID_Lista);
+      request.addParameter("ID_Jogos", TYPES.Int, ID_Lista);
   
       let Lista = null;
       request.on("row", (columns) => {
@@ -143,7 +143,7 @@ exports.getJogosByNome = (Nome_Do_Jogo, callback) => {
       if (err) return callback(err, null);
     });
 
-    request.addParameter("Nome", TYPES.VarChar, Nome_Do_Jogo);
+    request.addParameter("Nome_Do_Jogo", TYPES.VarChar, Nome_Do_Jogo);
 
     let Jogos = null;
     request.on("row", (columns) => {
@@ -174,7 +174,7 @@ exports.getListaByNome = (ID_Jogo, callback) => {
         if (err) return callback(err, null);
       });
   
-      request.addParameter("Nome", TYPES.VarChar, ID_Jogo);
+      request.addParameter("ID_Jogo", TYPES.VarChar, ID_Jogo);
   
       let Lista = null;
       request.on("row", (columns) => {
@@ -271,7 +271,7 @@ exports.createLista = (data, callback) => {
 
   //......................//
 
-  exports.updateLista = (ID_Jogo, data, callback) => {
+  exports.updateLista = (ID, data, callback) => {
     const connection = createConnection();
     connection.on("connect", (err) => {
       if (err) {
@@ -285,6 +285,7 @@ exports.createLista = (data, callback) => {
           callback(null, { message: "Lista atualizada com sucesso!" });
         }
       });
+      request.addParameter("ID", TYPES.VarChar, data.ID);
       request.addParameter("ID_Lista", TYPES.VarChar, data.ID_Lista);
       request.addParameter("ID_Jogo", TYPES.VarChar, data.ID_Jogo);
       request.addParameter("Email_interessado", TYPES.Int, data.Email_interessado);
