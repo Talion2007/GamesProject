@@ -93,7 +93,7 @@ exports.getAllDesejos = (req, res) => {
 
 // POST - Incluir desejo na lista
 exports.addDesejo = (req, res) => {
-    const novoJogo = req.body;
+    const novoDesejo = req.body;
     DesejoModel.create(novoDesejo, (err) => {
         if (err) {
             res.status(500).send('Erro ao adicionar jogo :(');
@@ -104,3 +104,14 @@ exports.addDesejo = (req, res) => {
 };
 
 // PUT - Atualizar lista
+exports.updateDesejo = (req, res) => {
+    const { id } = req.params;
+    const DsejosAtualizados = req.body;
+    DsejoModel.update(id, DsejosAtualizados, (err) => {
+        if (err) {
+            res.status(500).send('Erro ao atualizar jogo :(');
+        } else {
+            res.send('Jogo atualizado com sucesso :)');
+        }
+    });
+};
