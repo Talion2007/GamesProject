@@ -13,7 +13,6 @@ create table Lista_Desejos (
   ID_Jogo int not null,
   Email_interessado nvarchar(255),
   constraint FK_Lista_Desejos_Jogos foreign key (ID_Jogo) references Jogos(ID) -- Chave estrangeira
-
   )
 
 select * from Jogos
@@ -31,4 +30,6 @@ insert into Lista_Desejos (ID_Jogo,Email_interessado)
 values (1, 'JoaoDoCarmo@gmail.com'),
        (2, 'AmandaFernandes@gmail.com'),
        (3, 'CarlaSouza@gmail.com')
+
+
 
