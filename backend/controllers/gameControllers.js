@@ -1,4 +1,4 @@
-const jogosModel = require('../model/gamesModel'); // Importa o model para interagir com o banco
+const jogosModel = require('../models/gameModels'); // Importa o model para interagir com o banco
 
 // GET ALL - Listar todos os jogos
 exports.getAllJogos = (req, res) => {
