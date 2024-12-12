@@ -1,55 +1,73 @@
-//controllers/userController
-const userModel = require('../model/userModel'); // Importa o model para interagir com o banco
-// Função para lidar com a requisição de listagem de usuários
-exports.getUsers = (req, res) => {
-userModel.getAllUsers((err, users) => {
-if (err) {
-res.status(500).send('Erro ao buscar usuários'); // Retorna um erro 500 se algo deu errado
-} else {
-res.json(users); // Retorna os usuários em formato JSON
-}
-});
+const jogosModel = require('../model/gamesModel'); // Importa o model para interagir com o banco
+
+// GET ALL - Listar todos os jogos
+exports.getAllJogos = (req, res) => {
+    jogosModel.getAll((err, jogos) => {
+        if (err) {
+            res.status(500).send('Erro ao buscar jogos');
+        } else {
+            res.json(jogos);
+        }
+    });
 };
 
-// GET jogos
-
-
-
-
-
-
-// GET lista de desejos 
-// Get de gênero
-exports.createUser = (req, res) => {
-    const data = req.body; // Extrai o nome do corpo da requisição
-    userModel.createUser(data, (err) => {
-    if (err) {
-      res.status(500).send("Erro ao criar usuário"); // Retorna um erro 500 se algo deu errado
-    } else {
-      res.status(201).send("Usuário criado com sucesso"); // Retorna status 201 (criado) se bem sucedido
-    }
-    });
-    };
-    // Função para lidar com a requisição de atualização de usuário
-    exports.updateUser = (req, res) => {
-    const { id } = req.params; // Extrai o ID dos parâmetros da URL
-    const { name } = req.body; // Extrai o nome do corpo da requisição
-    userModel.updateUser(id, name, (err) => {
-    if (err) {
-      res.status(500).send("Erro ao atualizar usuário"); // Retorna um erro 500 se algo deu errado
-    } else {
-      res.send("Usuário atualizado com sucesso"); // Retorna uma mensagem de sucesso
-    }
-    });
-    };
-    // Função para lidar com a requisição de remoção de usuário
-    exports.deleteUser = (req, res) => {
-    const { id } = req.params; // Extrai o ID dos parâmetros da URL
-    userModel.deleteUser(id, (err) => {
+// GET Gênero - Listar jogos por gênero
+exports.getJogosByGenero = (req, res) => {
+    const { genero } = req.params;
+    jogosModel.getByGenero(genero, (err, jogos) => {
         if (err) {
-        res.status(500).send('Erro ao deletar usuário'); // Retorna um erro 500 se algo deu errado
+            res.status(500).send('Erro ao buscar jogos por gênero');
         } else {
-        res.send('Usuário deletado com sucesso'); // Retorna uma mensagem de sucesso
+            res.json(jogos);
         }
-        });
-        };
+    });
+};
+
+// GET Plataforma - Listar jogos por plataforma
+exports.getJogosByPlataforma = (req, res) => {
+    const { plataforma } = req.params;
+    jogosModel.getByPlataforma(plataforma, (err, jogos) => {
+        if (err) {
+            res.status(500).send('Erro ao buscar jogos por plataforma');
+        } else {
+            res.json(jogos);
+        }
+    });
+};
+
+// POST - Incluir jogo
+exports.addJogo = (req, res) => {
+    const novoJogo = req.body;
+    jogosModel.create(novoJogo, (err) => {
+        if (err) {
+            res.status(500).send('Erro ao adicionar jogo :(');
+        } else {
+            res.status(201).send('Jogo adicionado com sucesso :)');
+        }
+    });
+};
+
+// PUT - Atualizar jogo
+exports.updateJogo = (req, res) => {
+    const { id } = req.params;
+    const dadosAtualizados = req.body;
+    jogosModel.update(id, dadosAtualizados, (err) => {
+        if (err) {
+            res.status(500).send('Erro ao atualizar jogo :(');
+        } else {
+            res.send('Jogo atualizado com sucesso :)');
+        }
+    });
+};
+
+// DELETE - Deletar jogo
+exports.deleteJogo = (req, res) => {
+    const { id } = req.params;
+    jogosModel.delete(id, (err) => {
+        if (err) {
+            res.status(500).send('Erro ao deletar jogo :(');
+        } else {
+            res.send('Jogo deletado com sucesso :)');
+        }
+    });
+};
