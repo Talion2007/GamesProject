@@ -1,4 +1,4 @@
-const { Connection } = require('Games'); // Importa a classe Connection do pacote games 
+const { Connection } = require('tedious'); // Importa a classe Connection do pacote tedious
 // Configurações para conectar ao SQL Server 
 const config = { 
 server: 'localhost',  // Nome do servidor (pode ser 'localhost' ou um endereço remoto) 
@@ -10,7 +10,7 @@ server: 'localhost',  // Nome do servidor (pode ser 'localhost' ou um endereço 
         } 
     }, 
     options: { 
-        database: 'Games',      // Nome do banco de dados 
+        database: 'Joguinhos',      // Nome do banco de dados 
         encrypt: false,          // Desativar criptografia (pode mudar se necessário) 
         port: 1433,              // Porta padrão do SQL Server 
         trustServerCertificate: true // Necessário para evitar erro de SSL em ambiente local 
