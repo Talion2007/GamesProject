@@ -76,15 +76,13 @@ exports.deleteJogos = (req, res) => {
 
 
 //------Lista de desejos------//
-
-
 //GET ALL - listar os desejos
 exports.getAllDesejos = (req, res) => {
-    DesejosModel.getAllDesejos((err, DEsejos) => {
+    jogosModel.getAllDesejos((err, desejos) => {
         if (err) {
             res.status(500).send('Erro ao buscar jogos');
         } else {
-            res.json(jogos);
+            res.json(desejos);
         }
     });
 };
