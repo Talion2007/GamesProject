@@ -14,6 +14,6 @@ router.put('/jogos/:id', gameController.updateJogos);
 
 router.delete('/jogos/:id', gameController.deleteJogos);
 
-router.get('/lista', gameController.getAllJogos); 
+router.get('/lista', gameController.getAllDesejos); 
 
 module.exports = router;

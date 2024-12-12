@@ -76,6 +76,7 @@ exports.deleteJogos = (req, res) => {
 
 
 //------Lista de desejos------//
+
 //GET ALL - listar os desejos
 exports.getAllDesejos = (req, res) => {
     jogosModel.getAllDesejos((err, desejos) => {
