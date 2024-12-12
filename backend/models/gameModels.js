@@ -199,6 +199,10 @@ exports.deleteJogos = (id, callback) => {
   connection.connect();
 };
 
+
+
+
+
 //Lista
 exports.getAllDesejos = (callback) => {
   const connection = createConnection();

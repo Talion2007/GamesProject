@@ -89,26 +89,26 @@ exports.getAllDesejos = (req, res) => {
 
 
 // POST - Incluir desejo na lista
-exports.addDesejo = (req, res) => {
-    const novoDesejo = req.body;
-    DesejoModel.create(novoDesejo, (err) => {
-        if (err) {
-            res.status(500).send('Erro ao adicionar jogo :(');
-        } else {
-            res.status(201).send('Jogo adicionado com sucesso :)');
-        }
-    });
-};
+// exports.addDesejo = (req, res) => {
+//     const novoDesejo = req.body;
+//     DesejoModel.create(novoDesejo, (err) => {
+//         if (err) {
+//             res.status(500).send('Erro ao adicionar jogo :(');
+//         } else {
+//             res.status(201).send('Jogo adicionado com sucesso :)');
+//         }
+//     });
+// };
 
-// PUT - Atualizar lista
-exports.updateDesejo = (req, res) => {
-    const { id } = req.params;
-    const DsejosAtualizados = req.body;
-    DsejoModel.updateDesejo(id, DsejosAtualizados, (err) => {
-        if (err) {
-            res.status(500).send('Erro ao atualizar jogo :(');
-        } else {
-            res.send('Jogo atualizado com sucesso :)');
-        }
-    });
-};
+// // PUT - Atualizar lista
+// exports.updateDesejo = (req, res) => {
+//     const { id } = req.params;
+//     const DsejosAtualizados = req.body;
+//     DsejoModel.updateDesejo(id, DsejosAtualizados, (err) => {
+//         if (err) {
+//             res.status(500).send('Erro ao atualizar jogo :(');
+//         } else {
+//             res.send('Jogo atualizado com sucesso :)');
+//         }
+//     });
+// };
