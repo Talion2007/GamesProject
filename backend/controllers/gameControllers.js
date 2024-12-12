@@ -2,9 +2,9 @@ const jogosModel = require('../models/gameModels'); // Importa o model para inte
 
 // GET ALL - Listar todos os jogos
 exports.getAllJogos = (req, res) => {
-    jogosModel.getAll((err, jogos) => {
+    jogosModel.getAllJogos((err, jogos) => {
         if (err) {
-            res.status(500).send('Erro ao buscar jogos');
+            res.status(500).send('Erro ao buscar jogos :(');
         } else {
             res.json(jogos);
         }

@@ -2,7 +2,7 @@
 const createConnection = require("../db/db");
 const { Request, TYPES } = require("tedious");
 
-// Buscar todos os Users
+// Buscar todos os jogos
 exports.getAllJogos = (callback) => {
   const connection = createConnection();
   connection.on("connect", (err) => {
